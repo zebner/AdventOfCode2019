@@ -1,8 +1,11 @@
 ﻿// Learn more about F# at http://fsharp.org
-
 open System
 
 [<EntryPoint>]
-let main argv =
-    printfn "Hello World from F#!"
-    0 // return an integer exit code
+printfn "Which day would you like to run?"
+let dayToRun = Console.ReadLine()
+
+match dayToRun with
+            | "1" -> Day01.getSolution
+            | _ -> printfn "Could not find day"
+0 // return an integer exit code
