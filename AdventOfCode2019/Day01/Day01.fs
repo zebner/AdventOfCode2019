@@ -1,21 +1,22 @@
 ﻿module Day01
 
-open System.IO
+open AdventOfCode2019.Utilities
+
+let getFuelRequirement mass = (mass / 3) - 2
 
 
-let getFuel mass = (mass / 3) - 2
-
-
-let rec getFuel2 mass =
+let rec getFuelRequirementRec mass =
     if mass <= 0 then 0
-    else mass + getFuel2(getFuel mass)
+    else mass + getFuelRequirementRec(getFuelRequirement mass)
 
     
-let asInt: string -> int = int
-let parseEachLineAsInt fileName = File.ReadLines(fileName) |> Seq.map asInt
+//let asInt: string -> int = int
+//let parseEachLineAsInt fileName = File.ReadLines(fileName) |> Seq.map asInt
 
-let getSolution = 
-    let answerPart1 = parseEachLineAsInt "Day01\Input.txt" |> Seq.sumBy getFuel
+let getSolution =
+    let answerPart1 = parseEachLine asInt "Day01\Input.txt" 
+                        |> Seq.sumBy getFuelRequirement
     printfn "%i" answerPart1
-    let answerPart2 = parseEachLineAsInt "Day01\Input.txt" |> Seq.sumBy(fun line -> getFuel2 (getFuel line))
+    let answerPart2 = parseEachLine asInt "Day01\Input.txt" 
+                        |> Seq.sumBy(fun line -> getFuelRequirementRec (getFuelRequirement line))
     printfn "%i" answerPart2
