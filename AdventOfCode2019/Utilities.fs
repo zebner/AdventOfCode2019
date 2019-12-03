@@ -1,11 +1,20 @@
 ﻿namespace AdventOfCode2019
 
-open System
 open System.IO
+open System
 
 module Utilities =
 
-    let parseEachLine f = File.ReadLines >> Seq.map f
+    let parseSingleLine f fileName = 
+        use fs = new FileStream(fileName, FileMode.Open)
+        use reader = new StreamReader(fs)
+        f (reader.ReadLine())
 
-    let asString : string -> string = id
+
+    let parseEachLine f fileName = 
+        let lines = File.ReadLines(fileName)
+        lines |> Seq.map f
+
+
     let asInt : string -> int = int
+    let listOfInts (str: string) = str.Split(',', StringSplitOptions.None) |> Seq.map asInt
