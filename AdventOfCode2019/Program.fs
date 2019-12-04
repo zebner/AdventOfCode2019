@@ -8,5 +8,6 @@ let dayToRun = Console.ReadLine()
 match dayToRun with
             | "1" -> Day01.getSolution
             | "2" -> Day02.getSolution
+            | "3" -> Day03.getSolution
             | _ -> printfn "Could not find day"
 0 // return an integer exit code

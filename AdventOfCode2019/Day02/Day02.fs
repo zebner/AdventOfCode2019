@@ -5,7 +5,7 @@ open AdventOfCode2019.Utilities
 let insertNounAndVerb list noun verb =
     list |> Seq.mapi(fun i x -> if i = 1 then noun else if i = 2 then verb else x)
 
-let rec restoreGravity (list: seq<int>) address = 
+let rec restoreGravity list address = 
     let currentValue = list |> Seq.item(address)
     match currentValue with
         | 1 | 2 as opcode -> 

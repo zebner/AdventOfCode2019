@@ -18,3 +18,4 @@ module Utilities =
 
     let asInt : string -> int = int
     let listOfInts (str: string) = str.Split(',', StringSplitOptions.None) |> Seq.map asInt
+    let listOfStrings (str: string) = str.Split(',', StringSplitOptions.None)
